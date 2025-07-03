@@ -2,12 +2,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import io  #usado para manipular dados em memória
 import base64 #converte dados binários em texto
+from sqlalchemy import create_engine
+import seaborn as sns
 
-# Função para carregar a planilha
+DATABASE_URL = 'postgresql+psycopg2://postgres:postgres123@localhost:5432/Analise_Vendas'
+engine = create_engine(DATABASE_URL)
+
 def carregar_dados():
-    df = pd.read_excel('vendas_ficticias.xlsx')
-    return df
-
+    return pd.read_sql_query('SELECT * FROM vendas', engine)
 # Gera gráfico de valor total por produto e retorna como base64 (imagem)
 def grafico_Produto_valor():
     df = carregar_dados()
@@ -31,7 +33,17 @@ def grafico_Cidade_valor():
     agrupar.plot(kind='bar', title='Valor Total por Cidade', ax=ax)
     plt.xlabel('Cidade')
     plt.ylabel('Valor Total')
+    buf = io.BytesIO()
+    plt.savefig(buf, format='png')
+    plt.close()
+    buf.seek(0)
+    return base64.b64encode(buf.read()).decode('utf-8')
 
+def grafico_quantidade_cidade():
+    df = carregar_dados()
+    agrupar = df.groupby('Cidade')['Quantidade'].sum()
+    fig, ax = plt.subplots()
+    agrupar.plot(kind = 'bar', title = 'Quantidade por Cidade', ax=ax)
     buf = io.BytesIO()
     plt.savefig(buf, format='png')
     plt.close()
