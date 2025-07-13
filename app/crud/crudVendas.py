@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from datetime import date
 from sqlalchemy import text
-#validação de dados e gerenciamento de configurações
+
 class novaVendas(BaseModel):
     data_da_venda: date
     cliente: str
@@ -11,8 +11,6 @@ class novaVendas(BaseModel):
     valor_total: float
     cidade: str
     vendedor: str
-
-#O engine serve pra conectar, executar queries, inserir dados, etc.
 def  criar_venda(engine, venda: novaVendas):
     query = text("""
         INSERT INTO vendas ("Data da Venda", "Cliente", "Produto", "Quantidade", "Preço Unitário", "Valor Total", "Cidade", "Vendedor")
@@ -24,9 +22,9 @@ def  criar_venda(engine, venda: novaVendas):
 
 def listar_vendas(engine):
     query = text('SELECT * FROM vendas')
-    with engine.begin() as conn:                #Cria uma conexão transacional com o banco
-        resultado = conn.execute(query)         # Executa a instrução SQL passando os parâmetros de forma segura
-        return [dict(row._mapping) for row in resultado] #Vai converter todas as linhas da consulta em uma lista de dicionários:
+    with engine.begin() as conn:                
+        resultado = conn.execute(query)         
+        return [dict(row._mapping) for row in resultado] 
 def deletar_venda(engine, id: int):
     query = text('DELETE FROM vendas WHERE id = :id')
     with engine.begin() as conn:
