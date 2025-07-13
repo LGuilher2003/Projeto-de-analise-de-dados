@@ -1,42 +1,47 @@
-# API de Gráficos de Vendas
+# 📊 Projeto de Análise de Vendas com FastAPI + PostgreSQL + Power BI
 
-Este projeto é uma API desenvolvida com FastAPI para análise e visualização de dados de vendas. O objetivo é facilitar estudos e experimentos em Data Science, integrando gráficos dinâmicos, banco de dados PostgreSQL e análises customizadas.
+Este projeto foi desenvolvido com foco em **Análise de Dados**, integrando uma API com FastAPI e banco de dados PostgreSQL para alimentar visualizações em **Power BI**, além de contar com um **front-end básico** para inserção de novas vendas.
 
-## Funcionalidades
-- Visualização de gráficos de vendas por produto e por cidade
-- Leitura de dados a partir de planilhas Excel
-- Futuro: Integração com banco de dados PostgreSQL
-- Futuro: Novas análises e endpoints para estudos em Data Science
+---
 
-## Tecnologias Utilizadas
-- Python 3.10+
-- FastAPI
-- Pandas
-- Matplotlib
-- PostgreSQL (planejado)
+## 🔍 Objetivo
 
-## Como executar
-1. Instale as dependências:
-   ```bash
-   pip install fastapi uvicorn pandas matplotlib openpyxl
-   ```
-2. Execute o servidor:
-   ```bash
-   python -m uvicorn main:app --reload
-   ```
-3. Acesse os endpoints no navegador:
-   - `http://127.0.0.1:8000/grafico/Produto/Valor`
-   - `http://127.0.0.1:8000/grafico/Cidade/Valor`
+Demonstrar o processo completo de uma solução de análise de dados:
+- 📥 Entrada de dados via formulário web (HTML + JS)
+- 📡 API criada com FastAPI para comunicação com banco de dados
+- 🛢️ Armazenamento em PostgreSQL
+- 📈 Visualização dos dados e geração de gráficos em **Power BI**
 
-## Estrutura do Projeto
-- `main.py`: Arquivo principal da API FastAPI
-- `lerDados.py`: Funções para leitura e análise dos dados
-- `vendas_ficticias.xlsx`: Base de dados fictícia para testes
+---
 
-## Futuras Expansões
-- Conexão e manipulação de dados com PostgreSQL
-- Novos endpoints para análises estatísticas e machine learning
-- Documentação detalhada dos endpoints
+## 🧱 Tecnologias Utilizadas
 
-## Objetivo
-Este projeto serve como base para estudos em Data Science, APIs e integração com bancos de dados relacionais, sendo ideal para aprendizado e experimentação.
+- **Python** (FastAPI, Pandas, SQLAlchemy)
+- **PostgreSQL**
+- **Power BI**
+- **HTML, CSS e JavaScript (front-end simples)**
+- **dotenv** para variáveis de ambiente
+
+---
+
+## 🗃️ Estrutura do Projeto
+
+FASTAPI1/
+│
+├── app/                  # Backend com FastAPI
+│   ├── main.py
+│   ├── crud/             # Operações no banco (CRUD)
+│   └── database/         # Conexão com PostgreSQL
+│
+├── dados/
+│   └── vendas_ficticias.xlsx  # Base de dados inicial 
+│
+├── frontend/             # Formulário web
+│   ├── index.html
+│   ├── style.css
+│   └── app.js
+│
+├── .env                  # Variáveis de ambiente (IGNORADO NO GIT)
+├── .gitignore
+└── README.md
+Para rodar a aplicação coloque: python -m uvicorn app.main:app --reload no terminal
