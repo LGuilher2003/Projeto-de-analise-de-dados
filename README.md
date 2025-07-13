@@ -24,24 +24,4 @@ Demonstrar o processo completo de uma solução de análise de dados:
 
 ---
 
-## 🗃️ Estrutura do Projeto
-
-FASTAPI1/
-│
-├── app/                  # Backend com FastAPI
-│   ├── main.py
-│   ├── crud/             # Operações no banco (CRUD)
-│   └── database/         # Conexão com PostgreSQL
-│
-├── dados/
-│   └── vendas_ficticias.xlsx  # Base de dados inicial 
-│
-├── frontend/             # Formulário web
-│   ├── index.html
-│   ├── style.css
-│   └── app.js
-│
-├── .env                  # Variáveis de ambiente (IGNORADO NO GIT)
-├── .gitignore
-└── README.md
 Para rodar a aplicação coloque: python -m uvicorn app.main:app --reload no terminal
