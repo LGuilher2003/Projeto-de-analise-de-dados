@@ -7,19 +7,18 @@ from app.crud.crudVendas import criar_venda, listar_vendas, novaVendas, deletar_
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Ou especifique ["http://localhost:5500"] se quiser restringir
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 DATABASE_URL = 'postgresql+psycopg2://postgres:postgres123@localhost:5432/Analise_Vendas'
-engine = create_engine(DATABASE_URL) #cria uma conexão do python com o banco de dados PostgreSQL
-
+engine = create_engine(DATABASE_URL) 
 
 @app.get("/")
 def raiz():
     return RedirectResponse(url ="/docs")  
-#python -m uvicorn app.main:app --reload
+    
 @app.post("/Nova_Venda/")
 def nova_venda(venda: novaVendas):
     return  criar_venda(engine, venda.dict())
