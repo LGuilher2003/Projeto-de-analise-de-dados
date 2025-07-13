@@ -1,0 +1,66 @@
+body {
+  font-family: Arial;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+input, select {
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  margin: 10px 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.venda-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.loading {
+  display: none;
+  color: blue;
+  margin: 10px 0;
+}
+
+.error-message {
+  display: none;
+  color: red;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #ffeeee;
+  border: 1px solid #ffcccc;
+  border-radius: 4px;
+}
+
+#vendaForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#vendaForm button[type="submit"],
+#vendaForm button[type="button"] {
+  grid-column: span 2;
+}
+
+@media (max-width: 600px) {
+  #vendaForm {
+    grid-template-columns: 1fr;
+  }
+  
+  #vendaForm button[type="submit"],
+  #vendaForm button[type="button"] {
+    grid-column: span 1;
+  }
+}

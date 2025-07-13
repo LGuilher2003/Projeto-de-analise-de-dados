@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistema de Vendas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>📦 Sistema de Vendas</h1>
+  <div id="loading" class="loading">Carregando...</div>
+  <div id="error" class="error-message"></div>
+  
+  <button onclick="carregarVendas()">Listar Vendas</button>
+  
+  <form id="vendaForm">
+    <input type="hidden" name="id" id="vendaId">
+    <input type="date" name="data_da_venda" required>
+    <input type="text" name="cliente" placeholder="Cliente" required>
+    <select name="produto" required>
+    <option value="">Selecione o produto</option>
+    <option value="Notebook">Notebook</option>
+    <option value="Celular">Celular</option>
+    <option value="Teclado">Teclado</option>
+    <option value="Fone de Ouvido">Fone de Ouvido</option>
+    <option value="Mouse">Mouse</option>
+  </select>
+    <input type="number" name="quantidade" placeholder="Quantidade" min="1" required>
+    <input type="number" step="0.01" name="preco_unitario" placeholder="Preço Unitário" min="0" required>
+    <input type="number" step="0.01" name="valor_total" placeholder="Valor Total" min="0" required>
+    <select name="cidade" required>
+    <option value="">Selecione a cidade</option>
+    <option value="São Paulo">São Paulo</option>
+    <option value="Curitiba">Curitiba</option>
+    <option value="Belo Horizonte">Belo Horizonte</option>
+    <option value="Porto Alegre">Porto Alegre</option>
+    <option value="Nilopolis">Nilopolis</option>
+    <option value=" Salvador">Salvador</option>
+    <option value="Rio de Janeiro">Rio de Janeiro</option>
+  </select>
+    <select name="vendedor" required>
+    <option value="">Selecione o vendedor</option>
+    <option value="Camila">Camila</option>
+    <option value="Tatiane">Tatiane</option>
+    <option value="Bruno">Bruno</option>
+    <option value="Eduardo">Eduardo</option>
+    <option value="Fábio Almeida">Fábio Almeida</option>
+  </select>
+    <button type="submit" id="btnSalvar">Criar Venda</button>
+    <button type="button" onclick="resetarFormulario()">Cancelar</button>
+  </form>
+
+  <hr>
+
+  <h2>📋 Vendas Registradas</h2>
+  <div id="vendasContainer"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
