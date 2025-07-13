@@ -1,12 +1,10 @@
 let editandoId = null;
 
-// Elementos DOM
 const loadingElement = document.getElementById('loading');
 const errorElement = document.getElementById('error');
 const vendasContainer = document.getElementById('vendasContainer');
 const vendaForm = document.getElementById('vendaForm');
 
-// Funções de utilidade
 function showLoading() {
   loadingElement.style.display = 'block';
 }
@@ -21,7 +19,6 @@ function showError(message) {
   setTimeout(() => errorElement.style.display = 'none', 5000);
 }
 
-// Funções principais
 async function carregarVendas() {
   showLoading();
   try {
@@ -64,7 +61,6 @@ function formatarData(dataString) {
   return new Date(dataString).toLocaleDateString('pt-BR', options);
 }
 
-// Manipulação do formulário
 vendaForm.onsubmit = async function(e) {
   e.preventDefault();
   showLoading();
@@ -116,7 +112,6 @@ function preencherFormulario(vendaJson) {
   const venda = JSON.parse(decodeURIComponent(vendaJson));
   editandoId = venda.id;
   
-  // Formata a data para o input type="date" (YYYY-MM-DD)
   const dataVenda = new Date(venda["Data da Venda"]);
   const dataFormatada = dataVenda.toISOString().split('T')[0];
   
@@ -161,7 +156,6 @@ async function deletarVenda(id) {
   }
 }
 
-// Inicialização
 document.addEventListener('DOMContentLoaded', () => {
   carregarVendas();
 });
